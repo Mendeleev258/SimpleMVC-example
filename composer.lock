@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/adbario/php-dot-notation.git",
-                "reference": "d71a4b4c57c506bad3e3e9ec3f0013f541731e08"
+                "reference": "717c9a23568cdda79130baca312f978def24d7c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adbario/php-dot-notation/zipball/d71a4b4c57c506bad3e3e9ec3f0013f541731e08",
-                "reference": "d71a4b4c57c506bad3e3e9ec3f0013f541731e08",
+                "url": "https://api.github.com/repos/adbario/php-dot-notation/zipball/717c9a23568cdda79130baca312f978def24d7c6",
+                "reference": "717c9a23568cdda79130baca312f978def24d7c6",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "issues": "https://github.com/adbario/php-dot-notation/issues",
                 "source": "https://github.com/adbario/php-dot-notation/tree/3.x"
             },
-            "time": "2023-09-22T22:21:42+00:00"
+            "time": "2025-03-05T04:36:09+00:00"
         },
         {
             "name": "it-for-free/array_column",
@@ -340,5 +340,5 @@
         "php": ">=8.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

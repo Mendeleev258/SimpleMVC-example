@@ -1,0 +1,37 @@
+services:
+  app:
+    image: php:8.3-apache
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./apache-config.conf:/etc/apache2/sites-available/000-default.conf
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/web
+    depends_on:
+      - db
+    command: >
+      sh -c "docker-php-ext-install pdo_mysql &&
+             curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer &&
+             cd /var/www/html &&
+             composer install --ignore-platform-reqs &&
+             chown -R www-data:www-data /var/www/html/web/assets/ &&
+             a2enmod rewrite &&
+             service apache2 restart &&
+             tail -f /dev/null"
+
+  db:
+    image: mysql:8.0.35-debian
+    ports:
+      - "2306:306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: smvcbase_in_docker
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: 12345
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:

@@ -1,3 +1,10 @@
+<?php 
+use application\models\primitives\Role;
+
+// Получаем все доступные роли для выпадающего списка
+$roles = Role::cases();
+?>
+
 <?php include('includes/admin-users-nav.php'); ?>
 <h2><?= $addAdminusersTitle ?></h2>
 
@@ -14,8 +21,9 @@
     <div class="form-group">   
         <label for="role">Права доступа</label>
         <select name="role" id="role" class="form-control"> 
-            <option value="admin">Администратор</option>
-            <option value="auth_user">Зарегистрированный пользователь</option>
+            <?php foreach ($roles as $role): ?>
+                <option value="<?= $role->value ?>"><?= ucfirst(str_replace('_', ' ', $role->name)) ?></option>
+            <?php endforeach; ?>
         </select>
     </div>
     <div class="form-group">
@@ -25,5 +33,3 @@
     <input type="submit" class="btn btn-primary" name="saveNewUser" value="Сохранить">
     <input type="submit" class="btn" name="cancel" value="Назад">
 </form>
-
-
