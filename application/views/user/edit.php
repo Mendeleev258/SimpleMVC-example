@@ -21,11 +21,11 @@ $roles = Role::cases();
 
 <form id="editUser" method="post" action="<?= $Url::link("admin/adminusers/edit&id=" . $_GET['id'])?>">
     <h5>Введите имя пользователя</h5>
-    <input type="text" name="login" placeholder="логин пользователя" value="<?= htmlspecialchars($viewAdminusers->login) ?>"><br>
+    <input type="text" name="login" placeholder="логин пользователя" value="<?= htmlspecialchars($viewAdminusers->login, ENT_QUOTES, 'UTF-8') ?>"><br>
     <h5>Введите пароль</h5>
     <input type="text" name="pass" placeholder="новый пароль" value=""><br>
     <h5>Введите e-mail</h5>
-    <input type="text" name="email"  placeholder="email" value="<?= htmlspecialchars($viewAdminusers->email) ?>"><br>
+    <input type="text" name="email"  placeholder="email" value="<?= htmlspecialchars($viewAdminusers->email, ENT_QUOTES, 'UTF-8') ?>"><br>
     
     <h5>Выберите роль</h5>
     <select name="role">

@@ -2,8 +2,8 @@
 
 
 
-/* Футе для бутстрапа
--------------------------------------------------- */
+/* Футер для бутстрапа
+ -------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
@@ -28,8 +28,8 @@ body {
         -o-transform: scaleX(-1);
     -khtml-transform: scaleX(-1);
        -ms-transform: scaleX(-1);
-           transform: scaleX(-1);
-   display: inline-block;
+            transform: scaleX(-1);
+    display: inline-block;
 }
 
 
@@ -37,6 +37,40 @@ body {
     color: #17a2b8;
 }
 
+/* Добавим минимальные стили для отображения статей */
+#headlines {
+  list-style: none;
+ padding-left: 0;
+}
 
+#headlines li {
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #eee;
+}
 
+.pubDate {
+  font-size: .8em;
+  color: #6c757d;
+  display: block;
+  margin-bottom: .5em;
+}
 
+.category, .subcategory {
+  font-size: .8em;
+  color: #6c757d;
+  margin: .25em 0;
+}
+
+.category a, .subcategory a {
+  color: #007bff;
+}
+
+.summary {
+  margin: .5em 0 1em 0;
+}
+
+.showContent {
+  font-size: .9em;
+  color: #007bff;
+}

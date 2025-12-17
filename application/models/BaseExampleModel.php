@@ -2,6 +2,7 @@
 
 namespace application\models;
 
+use PDO;
 
 /**
  * Базовая клиентская модель
@@ -22,4 +23,5 @@ class BaseExampleModel extends \ItForFree\SimpleMVC\MVC\Model
         $modelData = $this->getById($id, $tableName);
         return $modelData->likes;
     }
+    
 }
