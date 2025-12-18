@@ -1,46 +1,48 @@
-<?php 
+<?php
+/**
+ * @var \App\Models\Article $article
+ */
+use ItForFree\SimpleMVC\Router\WebRouter;
+use ItForFree\SimpleMVC\Helpers\HtmlHelper;
 
-use application\assets\DemoJavascriptAsset;
-DemoJavascriptAsset::add();
-
+$this->extend('layouts/main');
 ?>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <?php if (isset($article)): ?>
-                <h1><?php echo htmlspecialchars($article->title, ENT_QUOTES, 'UTF-8') ?></h1>
-                
-                <p class="pubDate">
-                    <?php echo date('j F Y', strtotime($article->publicationDate))?>
-                </p>
-                
-                <?php if (isset($category)): ?>
-                    <span class="category">
-                        Категория: 
-                        <a href="/category/<?php echo $article->categoryId?>">
-                            <?php echo htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8')?>
-                        </a>
-                    </span>
-                <?php endif; ?>
-                
-                <?php if (isset($subcategory)): ?>
-                    <span class="subcategory">
-                        Подкатегория: 
-                        <a href="/subcategory/<?php echo $article->subcategoryId?>">
-                            <?php echo htmlspecialchars($subcategory->name, ENT_QUOTES, 'UTF-8')?>
-                        </a>
-                    </span>
-                <?php endif; ?>
-                
-                <div class="article-content">
-                    <?php echo $article->content ?>
-                </div>
-                
-                <p><a href="/">← Назад к списку статей</a></p>
-            <?php else: ?>
-                <p>Статья не найдена</p>
-                <p><a href="/">← На главную</a></p>
-            <?php endif; ?>
-        </div>
-    </div>
-</div>
+
+<?php $this->start('content') ?>
+
+<h1 style="width: 75%;"><?= HtmlHelper::specialchars($article->title) ?></h1>
+<div style="width: 75%; font-style: italic;"><?= HtmlHelper::specialchars($article->summary) ?></div>
+<div style="width: 75%;"><?= $article->content ?></div>
+<p class="pubDate">Published on <?= date('j F Y', $article->publicationDate) ?>
+
+<?php if ($category) { ?>
+    in
+    <a href="<?= WebRouter::link('article/archive&categoryId=' . $category->id) ?>">
+        <?= HtmlHelper::specialchars($category->name) ?>
+    </a>
+<?php } ?>
+
+<?php if ($subcategory) { ?>
+    in
+    <a href="<?= WebRouter::link('article/archive&categoryId=' . $category->id . '&subcategoryId=' . $subcategory->id) ?>">
+        <?= HtmlHelper::specialchars($subcategory->name) ?>
+    </a>
+<?php } ?>
+    
+</p>
+
+<?php if (!empty($article->authors)) { ?>
+    <p><strong>Authors:</strong>
+    <?php
+    $authorNames = array();
+    foreach ($article->authors as $author) {
+        $authorNames[] = HtmlHelper::specialchars($author['login']);
+    }
+    echo implode(', ', $authorNames);
+    ?>
+    </p>
+<?php } ?>
+
+<p><a href="/">Вернуться на главную страницу</a></p>
+
+<?php $this->stop() ?>

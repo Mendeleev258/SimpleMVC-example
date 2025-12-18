@@ -8,7 +8,7 @@ $User = Config::getObject('core.user.class');
 <!DOCTYPE html>
 <html>
     <?php include('includes/main/head.php'); ?>
-    <body> 
+    <body>
         <?php include('includes/admin-main/nav.php'); ?>
         <div class="container">
             <?= $CONTENT_DATA ?>

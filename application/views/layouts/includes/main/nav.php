@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 use ItForFree\SimpleMVC\Config;
 use ItForFree\SimpleMVC\Router\WebRouter;
 
@@ -10,7 +10,7 @@ $User = Config::getObject('core.user.class');
 
 ?>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!-- Меню оформленное с помощью  twitter bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!-- Меню оформленное с помощью twitter bootstrap -->
  <a class="navbar-brand" href="/" title="aka Самый Лучший Сайт ;)">SimpleMVC</a>
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@ $User = Config::getObject('core.user.class');
         <li class="nav-item ">
             <a class="nav-link" href="/">Главная</a>
         </li>
-        <?php  if ($User->isAllowed("login/login")): ?>
+        <?php if ($User->isAllowed("login/login")): ?>
         <li class="nav-item ">
             <a class="nav-link" href="<?= WebRouter::link("login/login") ?>">[Вход]</a>
         </li>
@@ -37,7 +37,7 @@ $User = Config::getObject('core.user.class');
         </li>
         <?php endif; ?>
         
-        <?php  if ($User->isAllowed("login/logout")): ?>
+        <?php if ($User->isAllowed("login/logout")): ?>
         <li class="nav-item ">
             <a class="nav-link" href="<?= WebRouter::link("login/logout") ?>">Выход (<?= $User->userName ?>)</a>
         </li>

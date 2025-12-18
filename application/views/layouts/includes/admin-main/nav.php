@@ -37,6 +37,12 @@ $User = Config::getObject('core.user.class');
         </li>
         <?php endif; ?>
         
+        <?php  if ($User->isAllowed("admin/articles/index")): ?>
+        <li class="nav-item ">
+            <a class="nav-link" href="<?= WebRouter::link("admin/articles/index") ?>"> Статьи </a>
+        </li>
+        <?php endif; ?>
+        
         <?php  if ($User->isAllowed("login/logout")): ?>
         <li class="nav-item ">
             <a class="nav-link" href="<?= WebRouter::link("login/logout") ?>">Выход (<?= $User->userName ?>)</a>
